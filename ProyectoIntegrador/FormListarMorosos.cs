@@ -20,7 +20,7 @@ namespace ProyectoIntegrador
 
         private void CargaGrilla()
         {
-            List<E_Cliente> morosos = Cliente.ListarMorosos();
+            List<E_Socio> morosos = Socio.ListarMorosos();
 
             if (morosos.Count > 0)
             {
@@ -33,7 +33,7 @@ namespace ProyectoIntegrador
                     dtgvMorosos.Rows[i].Cells[0].Value = morosos[i].Nombre;
                     dtgvMorosos.Rows[i].Cells[1].Value = morosos[i].Apellido;
                     dtgvMorosos.Rows[i].Cells[2].Value = morosos[i].Dni;
-                    dtgvMorosos.Rows[i].Cells[3].Value = i;
+                    dtgvMorosos.Rows[i].Cells[3].Value = morosos[i].Fecha_vencimiento_cuota.ToString("dd-MM-yyyy");
                 }
             }
             else
