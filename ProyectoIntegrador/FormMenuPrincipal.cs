@@ -22,5 +22,13 @@ namespace ProyectoIntegrador
             Form altaCliente = new FrmAltaCliente();
             altaCliente.Show();
         }
+
+        private void btnListarMorosos_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Form listarMorosos = new FrmListarMorosos();
+            listarMorosos.Show();
+        }
     }
 }

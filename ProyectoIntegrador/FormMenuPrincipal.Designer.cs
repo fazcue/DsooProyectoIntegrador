@@ -55,7 +55,6 @@
             // btnListarMorosos
             // 
             btnListarMorosos.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            btnListarMorosos.Enabled = false;
             btnListarMorosos.FlatAppearance.BorderSize = 0;
             btnListarMorosos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnListarMorosos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -67,6 +66,7 @@
             btnListarMorosos.TabIndex = 2;
             btnListarMorosos.Text = "LISTAR MOROSOS";
             btnListarMorosos.UseVisualStyleBackColor = false;
+            btnListarMorosos.Click += btnListarMorosos_Click;
             // 
             // btnPagarCuota
             // 
