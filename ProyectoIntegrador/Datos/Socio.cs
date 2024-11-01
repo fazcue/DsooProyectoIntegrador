@@ -60,5 +60,49 @@ namespace ProyectoIntegrador.Datos
 
             return morosos;
         }
+
+        public static E_Socio BuscarSocio(string dni)
+        {
+            MySqlConnection sqlCon = new MySqlConnection();
+            E_Socio socioEncontrado = null;
+
+            try
+            {
+                sqlCon = Conexion.Crear();
+                // query para buscar al socio por su dni
+                string query = "SELECT c.nombre, c.apellido, c.dni, s.nro_carnet, s.fecha_vencimiento_cuota " +
+                               "FROM cliente c JOIN socio s ON s.id_cliente = c.id " +
+                               "WHERE c.dni = @dni AND c.estado = 'activo';";
+
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.CommandType = CommandType.Text;
+                comando.Parameters.AddWithValue("@dni", dni);
+
+                sqlCon.Open();
+                MySqlDataReader respuesta = comando.ExecuteReader();
+
+                if (respuesta.HasRows && respuesta.Read())
+                {
+                    // extraemos los datos del socio
+                    string nombre = respuesta["nombre"].ToString();
+                    string apellido = respuesta["apellido"].ToString();
+                    int nro_carnet = (int)respuesta["nro_carnet"];
+                    DateTime fecha_vencimiento_cuota = (DateTime)respuesta["fecha_vencimiento_cuota"];
+
+                    // nueva instancia de E_Socio con los datos obtenidos
+                    socioEncontrado = new E_Socio(nombre, apellido, dni, nro_carnet, fecha_vencimiento_cuota);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar el socio.", ex);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+
+            return socioEncontrado;
+        }
     }
 }

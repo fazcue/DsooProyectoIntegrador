@@ -30,5 +30,17 @@ namespace ProyectoIntegrador
             Form listarMorosos = new FrmListarMorosos();
             listarMorosos.Show();
         }
+
+        private void btnEmitirCarnet_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form emitirCarnet = new FrmEmitirCarnet();
+            emitirCarnet.Show();
+        }
+
+        private void btnPagarCuota_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

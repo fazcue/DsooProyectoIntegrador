@@ -40,11 +40,12 @@
             cboTipo = new System.Windows.Forms.ComboBox();
             lblTipo = new System.Windows.Forms.Label();
             lblAltaClienteTitulo = new System.Windows.Forms.Label();
+            checkAptoFisico = new System.Windows.Forms.CheckBox();
             SuspendLayout();
             // 
             // txtNombre
             // 
-            txtNombre.Location = new System.Drawing.Point(22, 200);
+            txtNombre.Location = new System.Drawing.Point(22, 179);
             txtNombre.Name = "txtNombre";
             txtNombre.PlaceholderText = "Ej: Jose";
             txtNombre.Size = new System.Drawing.Size(100, 23);
@@ -54,7 +55,7 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblNombre.Location = new System.Drawing.Point(22, 179);
+            lblNombre.Location = new System.Drawing.Point(22, 159);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new System.Drawing.Size(50, 13);
             lblNombre.TabIndex = 9;
@@ -64,7 +65,7 @@
             // 
             lblApellido.AutoSize = true;
             lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblApellido.Location = new System.Drawing.Point(154, 179);
+            lblApellido.Location = new System.Drawing.Point(154, 159);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new System.Drawing.Size(52, 13);
             lblApellido.TabIndex = 10;
@@ -72,7 +73,7 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new System.Drawing.Point(154, 200);
+            txtApellido.Location = new System.Drawing.Point(154, 179);
             txtApellido.Name = "txtApellido";
             txtApellido.PlaceholderText = "Ej: Martinez";
             txtApellido.Size = new System.Drawing.Size(100, 23);
@@ -82,7 +83,7 @@
             // 
             lblDni.AutoSize = true;
             lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblDni.Location = new System.Drawing.Point(154, 117);
+            lblDni.Location = new System.Drawing.Point(154, 94);
             lblDni.Name = "lblDni";
             lblDni.Size = new System.Drawing.Size(29, 13);
             lblDni.TabIndex = 8;
@@ -90,7 +91,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new System.Drawing.Point(154, 138);
+            txtDni.Location = new System.Drawing.Point(154, 117);
             txtDni.Name = "txtDni";
             txtDni.PlaceholderText = "Ej: 39342911";
             txtDni.Size = new System.Drawing.Size(100, 23);
@@ -121,7 +122,7 @@
             btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = System.Drawing.Color.White;
-            btnLimpiar.Location = new System.Drawing.Point(22, 252);
+            btnLimpiar.Location = new System.Drawing.Point(22, 262);
             btnLimpiar.Margin = new System.Windows.Forms.Padding(0);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new System.Drawing.Size(100, 40);
@@ -138,7 +139,7 @@
             btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnCancelar.ForeColor = System.Drawing.Color.White;
-            btnCancelar.Location = new System.Drawing.Point(154, 252);
+            btnCancelar.Location = new System.Drawing.Point(154, 262);
             btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new System.Drawing.Size(100, 40);
@@ -152,7 +153,7 @@
             cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboTipo.FormattingEnabled = true;
             cboTipo.Items.AddRange(new object[] { "Socio", "No socio" });
-            cboTipo.Location = new System.Drawing.Point(22, 138);
+            cboTipo.Location = new System.Drawing.Point(22, 117);
             cboTipo.Name = "cboTipo";
             cboTipo.Size = new System.Drawing.Size(100, 23);
             cboTipo.TabIndex = 0;
@@ -161,7 +162,7 @@
             // 
             lblTipo.AutoSize = true;
             lblTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblTipo.Location = new System.Drawing.Point(22, 117);
+            lblTipo.Location = new System.Drawing.Point(22, 94);
             lblTipo.Name = "lblTipo";
             lblTipo.Size = new System.Drawing.Size(32, 13);
             lblTipo.TabIndex = 7;
@@ -171,12 +172,24 @@
             // 
             lblAltaClienteTitulo.AutoSize = true;
             lblAltaClienteTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.7499962F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblAltaClienteTitulo.Location = new System.Drawing.Point(109, 58);
+            lblAltaClienteTitulo.Location = new System.Drawing.Point(74, 42);
             lblAltaClienteTitulo.Margin = new System.Windows.Forms.Padding(0);
             lblAltaClienteTitulo.Name = "lblAltaClienteTitulo";
-            lblAltaClienteTitulo.Size = new System.Drawing.Size(212, 42);
+            lblAltaClienteTitulo.Size = new System.Drawing.Size(291, 42);
             lblAltaClienteTitulo.TabIndex = 102;
-            lblAltaClienteTitulo.Text = "Alta cliente";
+            lblAltaClienteTitulo.Text = "ALTA CLIENTE";
+            // 
+            // checkAptoFisico
+            // 
+            checkAptoFisico.AutoSize = true;
+            checkAptoFisico.Cursor = System.Windows.Forms.Cursors.Hand;
+            checkAptoFisico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            checkAptoFisico.Location = new System.Drawing.Point(26, 221);
+            checkAptoFisico.Name = "checkAptoFisico";
+            checkAptoFisico.Size = new System.Drawing.Size(139, 24);
+            checkAptoFisico.TabIndex = 103;
+            checkAptoFisico.Text = "APTO FÍSICO";
+            checkAptoFisico.UseVisualStyleBackColor = true;
             // 
             // FrmAltaCliente
             // 
@@ -184,6 +197,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.Ivory;
             ClientSize = new System.Drawing.Size(431, 320);
+            Controls.Add(checkAptoFisico);
             Controls.Add(lblAltaClienteTitulo);
             Controls.Add(lblTipo);
             Controls.Add(cboTipo);
@@ -212,6 +226,7 @@
             Controls.SetChildIndex(cboTipo, 0);
             Controls.SetChildIndex(lblTipo, 0);
             Controls.SetChildIndex(lblAltaClienteTitulo, 0);
+            Controls.SetChildIndex(checkAptoFisico, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,5 +245,6 @@
         private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.Label lblAltaClienteTitulo;
+        private System.Windows.Forms.CheckBox checkAptoFisico;
     }
 }
