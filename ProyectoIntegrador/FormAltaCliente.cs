@@ -1,4 +1,5 @@
-﻿using ProyectoIntegrador.Datos;
+﻿using MySqlX.XDevAPI;
+using ProyectoIntegrador.Datos;
 using ProyectoIntegrador.Entidades;
 using System;
 using System.Windows.Forms;
@@ -16,11 +17,18 @@ namespace ProyectoIntegrador
         {
             if (cboTipo.Text != "" && txtNombre.Text != "" && txtApellido.Text != "" && txtDni.Text != "")
             {
-                E_Cliente nuevo = new E_Cliente(txtNombre.Text, txtApellido.Text, txtDni.Text);
-                bool res = Cliente.AltaCliente(cboTipo.Text, nuevo);
+                if (checkAptoFisico.Checked)
+                {
+                    E_Cliente nuevo = new E_Cliente(txtNombre.Text, txtApellido.Text, txtDni.Text);
 
-                string mensaje = res ? "Registro completado con éxito!" : "El número de DNI ingresado ya existe en la base de datos.";
-                MessageBox.Show(mensaje);
+                    bool res = Cliente.AltaCliente(cboTipo.Text, nuevo);
+                    string mensaje = res ? "Registro completado con éxito!" : "El número de DNI ingresado ya existe en la base de datos.";
+                    MessageBox.Show(mensaje);
+                }
+                else
+                {
+                    MessageBox.Show("Es necesario presentar un apto físico para inscribirse en el club.");
+                }
             }
             else
             {
