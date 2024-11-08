@@ -31,10 +31,14 @@
             btnAltaCliente = new System.Windows.Forms.Button();
             btnListarMorosos = new System.Windows.Forms.Button();
             btnPagarCuota = new System.Windows.Forms.Button();
-            btnSalir = new System.Windows.Forms.Button();
-            lblMenuPrincipalTitulo = new System.Windows.Forms.Label();
             btnEmitirCarnet = new System.Windows.Forms.Button();
             SuspendLayout();
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.Location = new System.Drawing.Point(75, 11);
+            lblSubtitulo.Size = new System.Drawing.Size(242, 37);
+            lblSubtitulo.Text = "Menú Principal";
             // 
             // btnAltaCliente
             // 
@@ -44,7 +48,7 @@
             btnAltaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAltaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnAltaCliente.ForeColor = System.Drawing.Color.White;
-            btnAltaCliente.Location = new System.Drawing.Point(40, 84);
+            btnAltaCliente.Location = new System.Drawing.Point(38, 117);
             btnAltaCliente.Margin = new System.Windows.Forms.Padding(0);
             btnAltaCliente.Name = "btnAltaCliente";
             btnAltaCliente.Size = new System.Drawing.Size(134, 40);
@@ -61,7 +65,7 @@
             btnListarMorosos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnListarMorosos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnListarMorosos.ForeColor = System.Drawing.Color.White;
-            btnListarMorosos.Location = new System.Drawing.Point(40, 138);
+            btnListarMorosos.Location = new System.Drawing.Point(38, 171);
             btnListarMorosos.Margin = new System.Windows.Forms.Padding(0);
             btnListarMorosos.Name = "btnListarMorosos";
             btnListarMorosos.Size = new System.Drawing.Size(134, 40);
@@ -78,7 +82,7 @@
             btnPagarCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPagarCuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnPagarCuota.ForeColor = System.Drawing.Color.White;
-            btnPagarCuota.Location = new System.Drawing.Point(222, 84);
+            btnPagarCuota.Location = new System.Drawing.Point(220, 117);
             btnPagarCuota.Margin = new System.Windows.Forms.Padding(0);
             btnPagarCuota.Name = "btnPagarCuota";
             btnPagarCuota.Size = new System.Drawing.Size(134, 40);
@@ -87,34 +91,6 @@
             btnPagarCuota.UseVisualStyleBackColor = false;
             btnPagarCuota.Click += btnPagarCuota_Click;
             // 
-            // btnSalir
-            // 
-            btnSalir.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnSalir.FlatAppearance.BorderSize = 0;
-            btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnSalir.ForeColor = System.Drawing.Color.White;
-            btnSalir.Location = new System.Drawing.Point(133, 196);
-            btnSalir.Margin = new System.Windows.Forms.Padding(0);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new System.Drawing.Size(134, 40);
-            btnSalir.TabIndex = 3;
-            btnSalir.Text = "SALIR";
-            btnSalir.UseVisualStyleBackColor = false;
-            btnSalir.Click += btnSalir_Click;
-            // 
-            // lblMenuPrincipalTitulo
-            // 
-            lblMenuPrincipalTitulo.AutoSize = true;
-            lblMenuPrincipalTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblMenuPrincipalTitulo.Location = new System.Drawing.Point(98, 43);
-            lblMenuPrincipalTitulo.Margin = new System.Windows.Forms.Padding(0);
-            lblMenuPrincipalTitulo.Name = "lblMenuPrincipalTitulo";
-            lblMenuPrincipalTitulo.Size = new System.Drawing.Size(228, 29);
-            lblMenuPrincipalTitulo.TabIndex = 101;
-            lblMenuPrincipalTitulo.Text = "MENÚ PRINCIPAL";
-            // 
             // btnEmitirCarnet
             // 
             btnEmitirCarnet.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
@@ -122,7 +98,7 @@
             btnEmitirCarnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnEmitirCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold);
             btnEmitirCarnet.ForeColor = System.Drawing.Color.White;
-            btnEmitirCarnet.Location = new System.Drawing.Point(222, 138);
+            btnEmitirCarnet.Location = new System.Drawing.Point(220, 171);
             btnEmitirCarnet.Name = "btnEmitirCarnet";
             btnEmitirCarnet.Size = new System.Drawing.Size(134, 40);
             btnEmitirCarnet.TabIndex = 103;
@@ -137,10 +113,8 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.Ivory;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            ClientSize = new System.Drawing.Size(392, 254);
+            ClientSize = new System.Drawing.Size(392, 235);
             Controls.Add(btnEmitirCarnet);
-            Controls.Add(lblMenuPrincipalTitulo);
-            Controls.Add(btnSalir);
             Controls.Add(btnPagarCuota);
             Controls.Add(btnListarMorosos);
             Controls.Add(btnAltaCliente);
@@ -152,11 +126,8 @@
             Controls.SetChildIndex(btnAltaCliente, 0);
             Controls.SetChildIndex(btnListarMorosos, 0);
             Controls.SetChildIndex(btnPagarCuota, 0);
-            Controls.SetChildIndex(btnSalir, 0);
-            Controls.SetChildIndex(lblMenuPrincipalTitulo, 0);
             Controls.SetChildIndex(btnEmitirCarnet, 0);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -164,8 +135,6 @@
         private System.Windows.Forms.Button btnAltaCliente;
         private System.Windows.Forms.Button btnListarMorosos;
         private System.Windows.Forms.Button btnPagarCuota;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Label lblMenuPrincipalTitulo;
         private System.Windows.Forms.Button btnEmitirCarnet;
     }
 }

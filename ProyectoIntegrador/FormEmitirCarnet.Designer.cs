@@ -28,28 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblEmitirCarnetTitle = new System.Windows.Forms.Label();
             lblDniTitle = new System.Windows.Forms.Label();
             txtDni = new System.Windows.Forms.TextBox();
             btnAceptar = new System.Windows.Forms.Button();
             btnCancelar = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
-            // lblEmitirCarnetTitle
+            // lblSubtitulo
             // 
-            lblEmitirCarnetTitle.AutoSize = true;
-            lblEmitirCarnetTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold);
-            lblEmitirCarnetTitle.Location = new System.Drawing.Point(78, 61);
-            lblEmitirCarnetTitle.Name = "lblEmitirCarnetTitle";
-            lblEmitirCarnetTitle.Size = new System.Drawing.Size(298, 39);
-            lblEmitirCarnetTitle.TabIndex = 103;
-            lblEmitirCarnetTitle.Text = "EMITIR CARNET";
+            lblSubtitulo.Location = new System.Drawing.Point(70, 11);
+            lblSubtitulo.Size = new System.Drawing.Size(217, 37);
+            lblSubtitulo.Text = "Emitir Carnet";
             // 
             // lblDniTitle
             // 
             lblDniTitle.AutoSize = true;
             lblDniTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblDniTitle.Location = new System.Drawing.Point(184, 132);
+            lblDniTitle.Location = new System.Drawing.Point(146, 101);
             lblDniTitle.Name = "lblDniTitle";
             lblDniTitle.Size = new System.Drawing.Size(75, 37);
             lblDniTitle.TabIndex = 104;
@@ -57,7 +52,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new System.Drawing.Point(152, 185);
+            txtDni.Location = new System.Drawing.Point(114, 154);
             txtDni.MaxLength = 10;
             txtDni.Name = "txtDni";
             txtDni.PlaceholderText = "33016244";
@@ -71,7 +66,7 @@
             btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold);
             btnAceptar.ForeColor = System.Drawing.Color.White;
-            btnAceptar.Location = new System.Drawing.Point(104, 239);
+            btnAceptar.Location = new System.Drawing.Point(66, 208);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new System.Drawing.Size(100, 40);
             btnAceptar.TabIndex = 106;
@@ -86,7 +81,7 @@
             btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold);
             btnCancelar.ForeColor = System.Drawing.Color.White;
-            btnCancelar.Location = new System.Drawing.Point(229, 239);
+            btnCancelar.Location = new System.Drawing.Point(191, 208);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new System.Drawing.Size(100, 40);
             btnCancelar.TabIndex = 107;
@@ -98,17 +93,15 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(430, 320);
+            ClientSize = new System.Drawing.Size(357, 260);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Controls.Add(txtDni);
             Controls.Add(lblDniTitle);
-            Controls.Add(lblEmitirCarnetTitle);
             ForeColor = System.Drawing.Color.Black;
             Name = "FrmEmitirCarnet";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FormEmitirCarnet";
-            Controls.SetChildIndex(lblEmitirCarnetTitle, 0);
             Controls.SetChildIndex(lblDniTitle, 0);
             Controls.SetChildIndex(txtDni, 0);
             Controls.SetChildIndex(btnAceptar, 0);
@@ -118,8 +111,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblEmitirCarnetTitle;
         private System.Windows.Forms.Label lblDniTitle;
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Button btnAceptar;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblCarnetTitle = new System.Windows.Forms.Label();
             lblApellidoSocio = new System.Windows.Forms.Label();
             lblDniSocio = new System.Windows.Forms.Label();
             lblVencimientoTitle = new System.Windows.Forms.Label();
@@ -41,15 +40,11 @@
             lblNombreSocio = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
-            // lblCarnetTitle
+            // lblSubtitulo
             // 
-            lblCarnetTitle.AutoSize = true;
-            lblCarnetTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblCarnetTitle.Location = new System.Drawing.Point(85, 48);
-            lblCarnetTitle.Name = "lblCarnetTitle";
-            lblCarnetTitle.Size = new System.Drawing.Size(299, 33);
-            lblCarnetTitle.TabIndex = 103;
-            lblCarnetTitle.Text = "CARNET DE SOCIO";
+            lblSubtitulo.Location = new System.Drawing.Point(99, 11);
+            lblSubtitulo.Size = new System.Drawing.Size(261, 37);
+            lblSubtitulo.Text = "Carnet de Socio";
             // 
             // lblApellidoSocio
             // 
@@ -165,7 +160,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(460, 360);
+            ClientSize = new System.Drawing.Size(460, 364);
             Controls.Add(lblNombreSocio);
             Controls.Add(label1);
             Controls.Add(lblSocioNro);
@@ -176,11 +171,9 @@
             Controls.Add(lblVencimientoTitle);
             Controls.Add(lblDniSocio);
             Controls.Add(lblApellidoSocio);
-            Controls.Add(lblCarnetTitle);
             Name = "FrmSocio";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FormSocio";
-            Controls.SetChildIndex(lblCarnetTitle, 0);
             Controls.SetChildIndex(lblApellidoSocio, 0);
             Controls.SetChildIndex(lblDniSocio, 0);
             Controls.SetChildIndex(lblVencimientoTitle, 0);
@@ -196,8 +189,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblCarnetTitle;
         private System.Windows.Forms.Label lblApellidoSocio;
         private System.Windows.Forms.Label lblDniSocio;
         private System.Windows.Forms.Label lblVencimientoTitle;

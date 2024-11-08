@@ -33,7 +33,10 @@
             btnAcerca = new System.Windows.Forms.Button();
             btnCerrar = new System.Windows.Forms.Button();
             lblTitulo = new System.Windows.Forms.Label();
+            tlpSubtitulo = new System.Windows.Forms.TableLayoutPanel();
+            lblSubtitulo = new System.Windows.Forms.Label();
             tlpMenu.SuspendLayout();
+            tlpSubtitulo.SuspendLayout();
             SuspendLayout();
             // 
             // mySqlCommand1
@@ -109,6 +112,34 @@
             lblTitulo.MouseDown += mouse_down;
             lblTitulo.MouseMove += mouse_move;
             // 
+            // tlpSubtitulo
+            // 
+            tlpSubtitulo.ColumnCount = 1;
+            tlpSubtitulo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpSubtitulo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tlpSubtitulo.Controls.Add(lblSubtitulo, 0, 0);
+            tlpSubtitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            tlpSubtitulo.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            tlpSubtitulo.Location = new System.Drawing.Point(0, 30);
+            tlpSubtitulo.Name = "tlpSubtitulo";
+            tlpSubtitulo.RowCount = 1;
+            tlpSubtitulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlpSubtitulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tlpSubtitulo.Size = new System.Drawing.Size(405, 60);
+            tlpSubtitulo.TabIndex = 103;
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            lblSubtitulo.AutoSize = true;
+            lblSubtitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblSubtitulo.Location = new System.Drawing.Point(100, 11);
+            lblSubtitulo.Margin = new System.Windows.Forms.Padding(0);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new System.Drawing.Size(205, 37);
+            lblSubtitulo.TabIndex = 103;
+            lblSubtitulo.Text = "SUBTITULO";
+            // 
             // FrmBase
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -116,11 +147,14 @@
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.Color.Ivory;
             ClientSize = new System.Drawing.Size(405, 244);
+            Controls.Add(tlpSubtitulo);
             Controls.Add(tlpMenu);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Name = "FrmBase";
             Text = "FormBase";
             tlpMenu.ResumeLayout(false);
+            tlpSubtitulo.ResumeLayout(false);
+            tlpSubtitulo.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -130,5 +164,7 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnAcerca;
+        protected System.Windows.Forms.Label lblSubtitulo;
+        protected System.Windows.Forms.TableLayoutPanel tlpSubtitulo;
     }
 }
