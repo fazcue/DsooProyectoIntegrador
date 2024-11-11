@@ -1,13 +1,6 @@
 ﻿using ProyectoIntegrador.Datos;
 using ProyectoIntegrador.Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoIntegrador
@@ -26,10 +19,16 @@ namespace ProyectoIntegrador
             try
 
             {
-                E_Socio socio = Socio.BuscarSocio(dni);
+                E_Socio socio = Socio.Buscar(dni);
 
                 if (socio != null)
                 {
+                    if (socio.Fecha_vencimiento_cuota <= DateTime.Now)
+                    {
+                        MessageBox.Show("No se puede emitir carnet por adeudar cuota/s");
+                        return;
+                    }
+
                     // Si el dni ingresado existe y pertenece a un socio activo, se abre FrmSocio y muestra los datos
                     FrmSocio carnetSocio = new FrmSocio();
 
@@ -39,7 +38,7 @@ namespace ProyectoIntegrador
                         socio.Dni,
                         socio.Nro_carnet.ToString(),
                         socio.Fecha_vencimiento_cuota.ToString("dd/MM/yyyy")
-            );
+                    );
 
                     this.Close();
                     carnetSocio.Show();
