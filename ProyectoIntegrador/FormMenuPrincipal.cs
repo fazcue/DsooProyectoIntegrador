@@ -40,7 +40,9 @@ namespace ProyectoIntegrador
 
         private void btnPagarCuota_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            Form pagarCuota = new FrmPagarCuota();
+            pagarCuota.Show();
         }
     }
 }

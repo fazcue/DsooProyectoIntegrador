@@ -1,5 +1,4 @@
-﻿using MySqlX.XDevAPI;
-using ProyectoIntegrador.Datos;
+﻿using ProyectoIntegrador.Datos;
 using ProyectoIntegrador.Entidades;
 using System;
 using System.Windows.Forms;
@@ -19,7 +18,7 @@ namespace ProyectoIntegrador
             {
                 if (checkAptoFisico.Checked)
                 {
-                    E_Cliente nuevo = new E_Cliente(txtNombre.Text, txtApellido.Text, txtDni.Text);
+                    E_Cliente nuevo = new E_Cliente(txtNombre.Text, txtApellido.Text, txtDni.Text, DateTime.Now);
 
                     bool res = Cliente.AltaCliente(cboTipo.Text, nuevo);
                     string mensaje = res ? "Registro completado con éxito!" : "El número de DNI ingresado ya existe en la base de datos.";
@@ -49,6 +48,7 @@ namespace ProyectoIntegrador
             txtApellido.Clear();
             txtDni.Clear();
             cboTipo.SelectedIndex = -1;
+            checkAptoFisico.Checked = false;
         }
     }
 }

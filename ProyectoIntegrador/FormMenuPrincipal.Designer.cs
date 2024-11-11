@@ -70,14 +70,14 @@
             btnListarMorosos.Name = "btnListarMorosos";
             btnListarMorosos.Size = new System.Drawing.Size(134, 40);
             btnListarMorosos.TabIndex = 2;
-            btnListarMorosos.Text = "LISTAR MOROSOS";
+            btnListarMorosos.Text = "MOROSOS";
             btnListarMorosos.UseVisualStyleBackColor = false;
             btnListarMorosos.Click += btnListarMorosos_Click;
             // 
             // btnPagarCuota
             // 
             btnPagarCuota.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            btnPagarCuota.Enabled = false;
+            btnPagarCuota.Cursor = System.Windows.Forms.Cursors.Hand;
             btnPagarCuota.FlatAppearance.BorderSize = 0;
             btnPagarCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPagarCuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);

@@ -27,7 +27,7 @@ namespace ProyectoIntegrador.Datos
                 comando.Parameters.Add("nombre", MySqlDbType.VarChar).Value = nuevo.Nombre;
                 comando.Parameters.Add("apellido", MySqlDbType.VarChar).Value = nuevo.Apellido;
                 comando.Parameters.Add("dni", MySqlDbType.VarChar).Value = nuevo.Dni;
-                comando.Parameters.Add("estado", MySqlDbType.Enum).Value = nuevo.Estado;
+                comando.Parameters.Add("fecha_vencimiento_cuota", MySqlDbType.Enum).Value = nuevo.Fecha_vencimiento_cuota.ToString("yyyy-MM-dd");
 
                 // respuesta
                 MySqlParameter outParam = new MySqlParameter("respuesta", MySqlDbType.Int32);

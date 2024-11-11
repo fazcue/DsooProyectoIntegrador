@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             dtgvMorosos = new System.Windows.Forms.DataGridView();
+            btnVolver = new System.Windows.Forms.Button();
+            btnActualizar = new System.Windows.Forms.Button();
+            lblMensajeAlDia = new System.Windows.Forms.Label();
             nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             fechaVencimientoCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            btnVolver = new System.Windows.Forms.Button();
-            btnActualizar = new System.Windows.Forms.Button();
-            lblMensajeAlDia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)dtgvMorosos).BeginInit();
             SuspendLayout();
             // 
@@ -57,30 +57,6 @@
             dtgvMorosos.ReadOnly = true;
             dtgvMorosos.Size = new System.Drawing.Size(443, 161);
             dtgvMorosos.TabIndex = 103;
-            // 
-            // nombre
-            // 
-            nombre.HeaderText = "Nombre";
-            nombre.Name = "nombre";
-            nombre.ReadOnly = true;
-            // 
-            // apellido
-            // 
-            apellido.HeaderText = "Apellido";
-            apellido.Name = "apellido";
-            apellido.ReadOnly = true;
-            // 
-            // dni
-            // 
-            dni.HeaderText = "DNI";
-            dni.Name = "dni";
-            dni.ReadOnly = true;
-            // 
-            // fechaVencimientoCuota
-            // 
-            fechaVencimientoCuota.HeaderText = "Fecha Vencimiento";
-            fechaVencimientoCuota.Name = "fechaVencimientoCuota";
-            fechaVencimientoCuota.ReadOnly = true;
             // 
             // btnVolver
             // 
@@ -128,6 +104,30 @@
             lblMensajeAlDia.Text = "Todos al día";
             lblMensajeAlDia.Visible = false;
             // 
+            // nombre
+            // 
+            nombre.HeaderText = "Nombre";
+            nombre.Name = "nombre";
+            nombre.ReadOnly = true;
+            // 
+            // apellido
+            // 
+            apellido.HeaderText = "Apellido";
+            apellido.Name = "apellido";
+            apellido.ReadOnly = true;
+            // 
+            // dni
+            // 
+            dni.HeaderText = "DNI";
+            dni.Name = "dni";
+            dni.ReadOnly = true;
+            // 
+            // fechaVencimientoCuota
+            // 
+            fechaVencimientoCuota.HeaderText = "Vencimiento";
+            fechaVencimientoCuota.Name = "fechaVencimientoCuota";
+            fechaVencimientoCuota.ReadOnly = true;
+            // 
             // FrmListarMorosos
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -153,12 +153,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dtgvMorosos;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Label lblMensajeAlDia;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaVencimientoCuota;
-        private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Label lblMensajeAlDia;
     }
 }

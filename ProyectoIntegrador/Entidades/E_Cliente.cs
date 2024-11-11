@@ -7,19 +7,19 @@ namespace ProyectoIntegrador.Entidades
         private string nombre;
         private string apellido;
         private string dni;
-        private string estado;
+        private DateTime fecha_vencimiento_cuota;
 
-        public E_Cliente(string nombre, string apellido, string dni, string estado = "inactivo")
+        public E_Cliente(string nombre, string apellido, string dni, DateTime fecha_vencimiento_cuota)
         {
             this.nombre = nombre;
             this.apellido = apellido;
             this.dni = dni;
-            this.estado = estado;
+            this.fecha_vencimiento_cuota = fecha_vencimiento_cuota;
         }
 
         public string Nombre { get { return nombre; } }
         public string Apellido { get { return apellido; } }
         public string Dni { get { return dni; } }
-        public string Estado { get { return estado; } }
+        public DateTime Fecha_vencimiento_cuota { get { return fecha_vencimiento_cuota; } }
     }
 }
