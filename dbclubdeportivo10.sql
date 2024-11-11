@@ -24,14 +24,13 @@ CREATE TABLE IF NOT EXISTS cliente(
 	nombre VARCHAR(40) NOT NULL,
 	apellido VARCHAR(40) NOT NULL,
 	dni VARCHAR(10) UNIQUE NOT NULL,
-	estado ENUM('activo', 'inactivo') DEFAULT 'inactivo',
+	fecha_vencimiento_cuota DATE NOT NULL,
 	CONSTRAINT pk_cliente PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS socio(
 	id INT AUTO_INCREMENT,
 	nro_carnet INT UNIQUE NOT NULL,
-	fecha_vencimiento_cuota DATE NOT NULL,
 	id_cliente INT NOT NULL,
 	CONSTRAINT pk_socio PRIMARY KEY(id),
 	CONSTRAINT fk_socio_cliente_id FOREIGN KEY(id_cliente) REFERENCES cliente(id)
@@ -63,7 +62,7 @@ BEGIN
 END 
 $$
 
-CREATE PROCEDURE AltaCliente(tipo ENUM('socio', 'no socio'), nombre VARCHAR(40), apellido VARCHAR(40), dni VARCHAR(10), estado ENUM('activo', 'inactivo'), OUT respuesta INT)
+CREATE PROCEDURE AltaCliente(tipo ENUM('socio', 'no socio'), nombre VARCHAR(40), apellido VARCHAR(40), dni VARCHAR(10), fecha_vencimiento_cuota DATE, OUT respuesta INT)
 BEGIN
 	# Variables
     DECLARE dniCliente VARCHAR(10) DEFAULT NULL;
@@ -80,8 +79,8 @@ BEGIN
     # Si el dni no existe, insertar y cambiar valor de respuesta
 	IF dniCliente IS NULL THEN
 		# Datos cliente
-		INSERT INTO cliente (nombre, apellido, dni, estado)
-        VALUES (nombre, apellido, dni, estado);
+		INSERT INTO cliente (nombre, apellido, dni, fecha_vencimiento_cuota)
+        VALUES (nombre, apellido, dni, fecha_vencimiento_cuota);
         
         # id del cliente recién registrado
         SET idCliente = LAST_INSERT_ID();
@@ -89,8 +88,8 @@ BEGIN
         # Datos socio
         IF tipo = 'socio' THEN
 			# por el momento, el nro_carnet es igual al idCliente
-			INSERT INTO socio (nro_carnet, fecha_vencimiento_cuota, id_cliente)
-			VALUES (idCLiente, DATE_ADD(CURDATE(), INTERVAL 1 MONTH), idCliente);
+			INSERT INTO socio (nro_carnet, id_cliente)
+			VALUES (idCLiente, idCliente);
         END IF;
         
         # Datos no socio
