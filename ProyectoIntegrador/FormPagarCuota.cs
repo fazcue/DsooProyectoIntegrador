@@ -48,6 +48,13 @@ namespace ProyectoIntegrador
             {
                 // Actualizar fecha vencimiento
                 DateTime vencimiento = DateTime.ParseExact(lblVencimientoCliente.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                // si la fecha es anterior a la actual, actualizar
+                if (vencimiento < DateTime.Now)
+                {
+                    vencimiento = DateTime.Now;
+                }
+
                 DateTime nuevoVencimiento = vencimiento.AddDays(1);
                 lblVencimientoCliente.Text = nuevoVencimiento.ToString("dd/MM/yyyy");
 
