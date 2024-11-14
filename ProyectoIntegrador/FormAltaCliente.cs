@@ -14,13 +14,19 @@ namespace ProyectoIntegrador
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            // Si todos los campos han sido completados
             if (cboTipo.Text != "" && txtNombre.Text != "" && txtApellido.Text != "" && txtDni.Text != "")
             {
+                // Si el apto fisico ha sido marcado
                 if (checkAptoFisico.Checked)
                 {
+                    // Crear nuevo cliente
                     E_Cliente nuevo = new E_Cliente(txtNombre.Text, txtApellido.Text, txtDni.Text, DateTime.Now);
 
+                    // Darlo de alta
                     bool res = Cliente.AltaCliente(cboTipo.Text, nuevo);
+
+                    // Mensaje respuesta
                     string mensaje = res ? "Registro completado con éxito!" : "El número de DNI ingresado ya existe en la base de datos.";
                     MessageBox.Show(mensaje);
                 }
