@@ -35,18 +35,18 @@ namespace ProyectoIntegrador.Datos
 
                 // cargamos la tabla con el resultado
                 tabla.Load(resultado);
-
-                return tabla;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"Error al ingresar como administrador: {ex.Message}");
                 return null;
             }
             finally
             {
                 if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
             }
+
+            return tabla;
         }
     }
 }
