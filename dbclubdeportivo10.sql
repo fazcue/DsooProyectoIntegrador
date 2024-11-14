@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS socio(
 	CONSTRAINT fk_socio_cliente_id FOREIGN KEY(id_cliente) REFERENCES cliente(id)
 );
 
-CREATE TABLE IF NOT EXISTS noSocio(
+CREATE TABLE IF NOT EXISTS nosocio(
 	id INT AUTO_INCREMENT,
 	id_cliente INT NOT NULL,
 	CONSTRAINT pk_noSocio PRIMARY KEY(id),
