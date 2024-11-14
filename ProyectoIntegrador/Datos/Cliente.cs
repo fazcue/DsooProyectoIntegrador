@@ -45,7 +45,7 @@ namespace ProyectoIntegrador.Datos
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al dar de alta el cliente.", ex); ;
+                throw new Exception("Error al dar de alta el cliente: " + ex.Message);
             }
             finally
             {
@@ -58,7 +58,7 @@ namespace ProyectoIntegrador.Datos
         public static bool PagarCuota(string dni, string nuevo_vencimiento, decimal monto, string forma_pago, string total_cuotas)
         {
             MySqlConnection sqlCon = new MySqlConnection();
-            bool respuesta;
+            bool respuesta = false;
 
             try
             {
@@ -92,7 +92,7 @@ namespace ProyectoIntegrador.Datos
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al pagar cuota.", ex);
+                throw new Exception("Error al pagar cuota: " + ex.Message);
             }
             finally
             {
