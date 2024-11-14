@@ -8,8 +8,8 @@ namespace ProyectoIntegrador
 {
     public partial class FrmPagarCuota : FrmBase
     {
-        private float cuotaMensual = 8000;
-        private float cuotaDiaria = 1500;
+        private decimal cuotaMensual = 8000;
+        private decimal cuotaDiaria = 1500;
 
         public FrmPagarCuota()
         {
@@ -32,34 +32,26 @@ namespace ProyectoIntegrador
                 return;
             }
 
+            // Actualizar fecha vencimiento
+            DateTime vencimiento = DateTime.ParseExact(lblVencimientoCliente.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
             // Socio
             if (cboTipo.SelectedIndex == 0)
             {
-                // Actualizar fecha vencimiento
-                DateTime vencimiento = DateTime.ParseExact(lblVencimientoCliente.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                DateTime nuevoVencimiento = vencimiento.AddMonths(1);
-                lblVencimientoCliente.Text = nuevoVencimiento.ToString("dd/MM/yyyy");
-
-                Socio.PagarCuota(txtDni.Text, nuevoVencimiento.ToString("yyyy-MM-dd"));
+                vencimiento = vencimiento.AddMonths(1);
             }
-
-            // no socio
-            if (cboTipo.SelectedIndex == 1)
+            else
             {
-                // Actualizar fecha vencimiento
-                DateTime vencimiento = DateTime.ParseExact(lblVencimientoCliente.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                // si la fecha es anterior a la actual, actualizar
                 if (vencimiento < DateTime.Now)
                 {
                     vencimiento = DateTime.Now;
                 }
 
-                DateTime nuevoVencimiento = vencimiento.AddDays(1);
-                lblVencimientoCliente.Text = nuevoVencimiento.ToString("dd/MM/yyyy");
-
-                NoSocio.PagarCuota(txtDni.Text, nuevoVencimiento.ToString("yyyy-MM-dd"));
+                vencimiento = vencimiento.AddDays(1);
             }
+
+            lblVencimientoCliente.Text = vencimiento.ToString("dd/MM/yyyy");
+            Cliente.PagarCuota(txtDni.Text, vencimiento.ToString("yyyy-MM-dd"), cuotaMensual, cboFormaPago.Text, cboCuotas.Text);
 
             // Mostrar mensaje y reestablecer forma de pago
             MessageBox.Show("Pago recibido correctamente.\nNuevo vencimiento: " + lblVencimientoCliente.Text);
@@ -75,54 +67,25 @@ namespace ProyectoIntegrador
                 return;
             }
 
-            // socio
-            if (cboTipo.SelectedIndex == 0)
+            E_Cliente cliente = cboTipo.SelectedIndex == 0 ? Socio.Buscar(txtDni.Text) : NoSocio.Buscar(txtDni.Text);
+
+            if (cliente != null)
             {
-                E_Socio socio = Socio.Buscar(txtDni.Text);
+                lblNombreCliente.Text = cliente.Nombre;
+                lblApellidoCliente.Text = cliente.Apellido;
 
-                if (socio != null)
-                {
-                    lblNombreCliente.Text = socio.Nombre;
-                    lblApellidoCliente.Text = socio.Apellido;
+                DateTime vencimiento = cliente.Fecha_vencimiento_cuota;
+                lblVencimientoCliente.Text = vencimiento.ToString("dd/MM/yyyy");
 
-                    DateTime vencimiento = socio.Fecha_vencimiento_cuota;
-                    lblVencimientoCliente.Text = vencimiento.ToString("dd/MM/yyyy");
+                lblMontoCliente.Text = "$" + cuotaMensual.ToString();
 
-                    lblMontoCliente.Text = "$" + cuotaMensual.ToString();
-
-                    // habilitar elementos para realizar el pago
-                    btnPagar.Enabled = true;
-                    cboFormaPago.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Socio no encontrado");
-                }
+                // habilitar elementos para realizar el pago
+                btnPagar.Enabled = true;
+                cboFormaPago.Enabled = true;
             }
-
-            // no socio
-            if (cboTipo.SelectedIndex == 1)
+            else
             {
-                E_NoSocio noSocio = NoSocio.Buscar(txtDni.Text);
-
-                if (noSocio != null)
-                {
-                    lblNombreCliente.Text = noSocio.Nombre;
-                    lblApellidoCliente.Text = noSocio.Apellido;
-
-                    DateTime vencimiento = noSocio.Fecha_vencimiento_cuota;
-                    lblVencimientoCliente.Text = vencimiento.ToString("dd/MM/yyyy");
-
-                    lblMontoCliente.Text = "$" + cuotaDiaria.ToString();
-
-                    // habilitar elementos para realizar el pago
-                    btnPagar.Enabled = true;
-                    cboFormaPago.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("No Socio no encontrado");
-                }
+                MessageBox.Show(cboTipo.SelectedIndex == 0 ? "Socio no encontrado" : "No socio no encontrado");
             }
         }
 
