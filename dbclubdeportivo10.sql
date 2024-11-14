@@ -115,6 +115,15 @@ BEGIN
 END
 $$
 
+CREATE PROCEDURE ListarMorosos()
+BEGIN
+  SELECT c.nombre, c.apellido, c.dni, c.fecha_vencimiento_cuota, s.nro_carnet
+  FROM cliente c
+  JOIN socio s ON s.id_cliente = c.id
+  WHERE c.fecha_vencimiento_cuota <= NOW();
+END
+$$
+
 CREATE PROCEDURE PagarCuota(dni VARCHAR(10), nuevo_vencimiento DATE, monto DECIMAL(10, 2), forma_pago ENUM('efectivo', 'tarjeta'), total_cuotas VARCHAR(10), OUT respuesta INT)
 BEGIN
 	# Variables
