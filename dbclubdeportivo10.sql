@@ -43,6 +43,17 @@ CREATE TABLE IF NOT EXISTS noSocio(
 	CONSTRAINT fk_noSocio_cliente_id FOREIGN KEY(id_cliente) REFERENCES cliente(id)
 );
 
+CREATE TABLE IF NOT EXISTS cuota(
+	id INT AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    monto DECIMAL(10, 2) NOT NULL,
+    forma_pago ENUM('efectivo', 'tarjeta') NOT NULL,
+    total_cuotas VARCHAR(10) NOT NULL,
+    id_cliente INT NOT NULL,
+    CONSTRAINT pk_cuota PRIMARY KEY(id),
+	CONSTRAINT fk_cuota_cliente_id FOREIGN KEY(id_cliente) REFERENCES cliente(id)
+);
+
 # INSERTAR DATOS LOGIN ADMIN
 INSERT INTO rol
 VALUES (10,'Administrador');
@@ -101,6 +112,35 @@ BEGIN
         # Actualizo respuesta
         SET respuesta = 1;
 	END IF;
+END
+$$
+
+CREATE PROCEDURE PagarCuota(dni VARCHAR(10), nuevo_vencimiento DATE, monto DECIMAL(10, 2), forma_pago ENUM('efectivo', 'tarjeta'), total_cuotas VARCHAR(10), OUT respuesta INT)
+BEGIN
+	# Variables
+    DECLARE idCliente INT;
+    
+    SET respuesta = 0;
+    
+    # Buscar id del cliente
+    SET idCliente = (
+		SELECT c.id FROM cliente c
+        WHERE c.dni = dni
+	);
+    
+    IF idCliente IS NOT NULL THEN
+		# actualizar fecha vencimiento cuota
+		UPDATE cliente c
+		SET fecha_vencimiento_cuota = nuevo_vencimiento
+		WHERE c.dni = dni;
+
+		# guardar info del pago   
+		INSERT INTO cuota (fecha, monto, forma_pago, total_cuotas, id_cliente)
+		VALUES (NOW(), monto, forma_pago, total_cuotas, idCliente);
+        
+        # Actualizo respuesta
+        SET respuesta = 1;
+    END IF;
 END
 $$
 DELIMITER ;
