@@ -11,7 +11,7 @@ namespace ProyectoIntegrador.Datos
         {
             MySqlConnection sqlCon = new MySqlConnection();
 
-            bool respuesta;
+            bool respuesta = false;
 
             try
             {
@@ -37,22 +37,22 @@ namespace ProyectoIntegrador.Datos
                 // abrimos la conexion
                 sqlCon.Open();
 
-                // almacenamos el resulatdo en la variable
+                // almacenamos el resultado en la variable
                 comando.ExecuteNonQuery();
 
                 // cargamos la tabla con el resultado
-                respuesta = (int)outParam.Value == 1 ? true : false;
-
-                return respuesta;
+                respuesta = (int)outParam.Value == 1;
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception("Error al dar de alta el cliente.", ex); ;
             }
             finally
             {
                 if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
             }
+
+            return respuesta;
         }
 
         public static bool PagarCuota(string dni, string nuevo_vencimiento, decimal monto, string forma_pago, string total_cuotas)
@@ -84,7 +84,7 @@ namespace ProyectoIntegrador.Datos
                 // abrimos la conexion
                 sqlCon.Open();
 
-                // almacenamos el resulatdo en la variable
+                // almacenamos el resultado en la variable
                 comando.ExecuteNonQuery();
 
                 // cargamos la tabla con el resultado
