@@ -15,8 +15,10 @@ namespace ProyectoIntegrador
         private void btnIngresar_Click(object sender, EventArgs e)
         {
 
+            // Loguar usuario administrador
             DataTable tabla = Usuario.Login(txtUsuario.Text, txtClave.Text);
 
+            // Si se logueo, mostrar formulario Menú Principal
             if (tabla != null && tabla.Rows.Count > 0)
             {
                 this.Hide();
