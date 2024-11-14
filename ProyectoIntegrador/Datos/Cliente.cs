@@ -54,5 +54,52 @@ namespace ProyectoIntegrador.Datos
                 if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
             }
         }
+
+        public static bool PagarCuota(string dni, string nuevo_vencimiento, decimal monto, string forma_pago, string total_cuotas)
+        {
+            MySqlConnection sqlCon = new MySqlConnection();
+            bool respuesta;
+
+            try
+            {
+                sqlCon = Conexion.Crear();
+
+                // el comando es un elemento que almacena en este caso el nombre
+                // del procedimiento almacenado y la referencia a la conexion
+                MySqlCommand comando = new MySqlCommand("PagarCuota", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // definimos los parametros que tiene el procedure
+                comando.Parameters.Add("dni", MySqlDbType.VarChar).Value = dni;
+                comando.Parameters.Add("nuevo_vencimiento", MySqlDbType.VarChar).Value = nuevo_vencimiento;
+                comando.Parameters.Add("monto", MySqlDbType.VarChar).Value = monto;
+                comando.Parameters.Add("forma_pago", MySqlDbType.VarChar).Value = forma_pago;
+                comando.Parameters.Add("total_cuotas", MySqlDbType.Enum).Value = total_cuotas;
+
+                // respuesta
+                MySqlParameter outParam = new MySqlParameter("respuesta", MySqlDbType.Int32);
+                outParam.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(outParam);
+
+                // abrimos la conexion
+                sqlCon.Open();
+
+                // almacenamos el resulatdo en la variable
+                comando.ExecuteNonQuery();
+
+                // cargamos la tabla con el resultado
+                respuesta = (int)outParam.Value == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al pagar cuota.", ex);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+
+            return respuesta;
+        }
     }
 }
