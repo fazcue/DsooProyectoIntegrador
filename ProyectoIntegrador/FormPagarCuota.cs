@@ -8,8 +8,8 @@ namespace ProyectoIntegrador
 {
     public partial class FrmPagarCuota : FrmBase
     {
-        private decimal cuotaMensual = 8000;
-        private decimal cuotaDiaria = 1500;
+        private decimal CUOTA_MENSUAL = 8000;
+        private decimal CUOTA_DIARIA = 1500;
 
         public FrmPagarCuota()
         {
@@ -32,13 +32,14 @@ namespace ProyectoIntegrador
                 return;
             }
 
-            // Actualizar fecha vencimiento
             DateTime vencimiento = DateTime.ParseExact(lblVencimientoCliente.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            decimal monto;
 
-            // Socio
+            // Actualizar fecha de vencimiento y monto según tipo
             if (cboTipo.SelectedIndex == 0)
             {
                 vencimiento = vencimiento.AddMonths(1);
+                monto = this.CUOTA_MENSUAL;
             }
             else
             {
@@ -48,13 +49,22 @@ namespace ProyectoIntegrador
                 }
 
                 vencimiento = vencimiento.AddDays(1);
+                monto = this.CUOTA_DIARIA;
             }
 
-            lblVencimientoCliente.Text = vencimiento.ToString("dd/MM/yyyy");
-            Cliente.PagarCuota(txtDni.Text, vencimiento.ToString("yyyy-MM-dd"), cuotaMensual, cboFormaPago.Text, cboCuotas.Text);
+            // Realizar el pago
+            bool res = Cliente.PagarCuota(txtDni.Text, vencimiento.ToString("yyyy-MM-dd"), monto, cboFormaPago.Text, cboCuotas.Text);
 
-            // Mostrar mensaje y reestablecer forma de pago
-            MessageBox.Show("Pago recibido correctamente.\nNuevo vencimiento: " + lblVencimientoCliente.Text);
+            if (res)
+            {
+                lblVencimientoCliente.Text = vencimiento.ToString("dd/MM/yyyy");
+                MessageBox.Show("Pago recibido correctamente.\nNuevo vencimiento: " + lblVencimientoCliente.Text);
+            }
+            else
+            {
+                MessageBox.Show("Error: No se ha registrado el pago");
+            }
+
             cboFormaPago.SelectedIndex = -1;
         }
 
@@ -77,7 +87,7 @@ namespace ProyectoIntegrador
                 DateTime vencimiento = cliente.Fecha_vencimiento_cuota;
                 lblVencimientoCliente.Text = vencimiento.ToString("dd/MM/yyyy");
 
-                lblMontoCliente.Text = "$" + cuotaMensual.ToString();
+                lblMontoCliente.Text = cboTipo.SelectedIndex == 0 ? "$" + this.CUOTA_MENSUAL.ToString() : "$" + this.CUOTA_DIARIA.ToString();
 
                 // habilitar elementos para realizar el pago
                 btnPagar.Enabled = true;
