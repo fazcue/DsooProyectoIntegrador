@@ -13,47 +13,43 @@ namespace ProyectoIntegrador.Datos
             MySqlConnection sqlCon = new MySqlConnection();
             List<E_Socio> morosos = new List<E_Socio>();
 
-            MySqlDataReader respuesta;
-            DateTime fechaActual = DateTime.Now;
+            MySqlDataReader resultado;
+            DataTable tabla = new DataTable();
 
             try
             {
                 sqlCon = Conexion.Crear();
 
-                // query
-                string query = "SELECT c.nombre, c.apellido, c.dni, s.nro_carnet, c.fecha_vencimiento_cuota FROM cliente c JOIN socio s ON s.id_cliente = c.id WHERE c.fecha_vencimiento_cuota <= @fechaActual;";
-
-                // comando de tipo texto utilizando la query definida
-                MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                comando.CommandType = CommandType.Text;
-                comando.Parameters.AddWithValue("@fechaActual", fechaActual);
+                // el comando es un elemento que almacena en este caso el nombre
+                // del procedimiento almacenado y la referencia a la conexion
+                MySqlCommand comando = new MySqlCommand("ListarMorosos", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
 
                 // abrimos la conexion
                 sqlCon.Open();
 
                 // almacenamos el resulatdo en la variable
-                respuesta = comando.ExecuteReader();
+                resultado = comando.ExecuteReader();
 
-                if (respuesta.HasRows)
+                // Si hay morosos, guardarlos en lista 'morosos'
+                if (resultado.HasRows)
                 {
-                    while (respuesta.Read())
+                    while (resultado.Read())
                     {
-                        string nombre = respuesta["nombre"].ToString();
-                        string apellido = respuesta["apellido"].ToString();
-                        string dni = respuesta["dni"].ToString();
-                        int nro_carnet = (int)respuesta["nro_carnet"];
-                        DateTime fecha_vencimiento_cuota = (DateTime)respuesta["fecha_vencimiento_cuota"];
-
+                        string nombre = resultado["nombre"].ToString();
+                        string apellido = resultado["apellido"].ToString();
+                        string dni = resultado["dni"].ToString();
+                        int nro_carnet = (int)resultado["nro_carnet"];
+                        DateTime fecha_vencimiento_cuota = (DateTime)resultado["fecha_vencimiento_cuota"];
 
                         E_Socio nuevo = new E_Socio(nombre, apellido, dni, nro_carnet, fecha_vencimiento_cuota);
-
                         morosos.Add(nuevo);
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception("Error al buscar listar morosos" + ex.Message); ;
             }
             finally
             {
