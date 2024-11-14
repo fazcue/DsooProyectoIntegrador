@@ -20,9 +20,10 @@ namespace ProyectoIntegrador
 
         private void CargaGrilla()
         {
-            // consultar listado de morosos
+            // Obtener listado de socios morosos
             List<E_Socio> morosos = Socio.ListarMorosos();
 
+            // Si hay morosos, cargarlos en la grilla
             if (morosos.Count > 0)
             {
                 for (int i = 0; i < morosos.Count; i++)
