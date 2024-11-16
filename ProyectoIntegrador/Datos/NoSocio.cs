@@ -40,7 +40,7 @@ namespace ProyectoIntegrador.Datos
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al buscar el no socio.", ex);
+                throw new Exception("Error al buscar el no socio. " + ex.Message);
             }
             finally
             {

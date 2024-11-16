@@ -49,7 +49,7 @@ namespace ProyectoIntegrador.Datos
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al buscar listar morosos" + ex.Message); ;
+                throw new Exception("Error al buscar listar morosos" + ex.Message);
             }
             finally
             {
