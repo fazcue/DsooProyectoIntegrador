@@ -24,7 +24,7 @@ namespace ProyectoIntegrador.Datos
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception("Error al conectar con la bd: " + ex.Message);
             }
 
             return conexion;
